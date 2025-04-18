@@ -67,7 +67,7 @@ Each subfolder in `Main/` contains an independent experiment.
 Example:
 
 ```bash
-python "Main/Loss function comparison experiment/run_loss_test.py"
+python "Main/Loss function comparison experiment/cnn-lstm-attention huber_loss.py"
 ```
 
 If you encounter errors like `ModuleNotFound`, copy files from `utils/` into the current folder or adjust Python import paths.
