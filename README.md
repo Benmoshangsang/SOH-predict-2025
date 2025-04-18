@@ -1,29 +1,44 @@
-# SOH Prediction and Component Detection for Lithium-ion Batteries
+SOH Prediction and Component Detection for Lithium-ion Batteries
+This repository contains the source code for predicting the State-of-Health (SOH) of lithium-ion batteries using a modified deep learning pipeline based on CNN-LSTM with attention mechanisms. The project also supports various experiments including hyperparameter optimization, loss function evaluation, ablation studies, and data augmentation techniques.
 
-This repository contains the source code for lithium-ion battery State-of-Health (SOH) prediction based on a customized deep learning pipeline. The implementation uses Python 3.11.5 and TensorFlow.
+📁 Project Structure
+The repository consists of two main folders:
 
-## Project Structure
+Main/:
+Contains separate subfolders for each experimental module:
+Main function comparison experiment: Models with different main network structures
+Loss function comparison experiment: Experiments comparing multiple loss functions
+Hyperparameter comparison experiment: Runs using different hyperparameter configurations
+Data Augmentation: Experiments using original + augmented datasets (slicing, flipping, and linear mix)
+Ablation experiment: Component-wise evaluation and removal of modules to assess contribution
 
-The codebase is organized by functionality across multiple folders. Each folder contains a specific set of related modules:
+utils/:
+Contains support scripts and shared modules such as:
+param_*.py: Model parameter configurations
+utils.py, scale.py: Utility functions for normalization, metrics, and preprocessing
+param_V_CNN_C_LSTM.py: Main model architecture script (CNN + LSTM + Attention)
 
-- `main/`: Contains the core functions and scripts for model training, evaluation, and prediction.
-- `utils/`: Utility functions such as preprocessing, metrics, and visualizations.
-- `losses/`: Custom loss functions.
-- `augmentation/`: Data augmentation strategies.
+🔁 If any script from Main/ cannot run due to missing modules, copy the required file(s) from utils/ into the same working directory.
+🐍 Environment Setup
+Python version: 3.11.5
+Framework: TensorFlow
+Recommended environment manager: Anaconda
+Install dependencies via:
 
-> Note: Some support scripts (e.g., from `utils/`) are required to run code in `main/`. If you encounter module import errors when running outside the root directory, consider copying the necessary support files into the same working folder.
-
-## Python Environment
-
-- Python version: `3.11.5`
-- Deep learning framework: `TensorFlow`
-- Other dependencies can be installed using:
-
-```bash
 pip install -r requirements.txt
+📊 Dataset & Results
+All datasets and experiment results have been deposited to Zenodo. This includes:
+Raw NASA battery datasets
+Augmented datasets (generated using slicing, flipping, and mix techniques)
+SOH prediction results for all experiments
+Baseline vs enhanced model comparisons
+Hyperparameter tuning logs
+Ablation study output
+📥 DOI: 10.5281/zenodo.15239011
 
-## Dataset and Results
+🚨 All new datasets were created using scripts in the repository.
 
-All datasets used in this study, including the original and augmented versions, along with experimental results (e.g., baseline model, hyperparameter optimization, ablation results), are available via Zenodo:
-
-DOI: 10.5281/zenodo.15239011
+🔧 How to Run
+Each experiment in the Main/ folder can be run independently by executing the corresponding .py file. Example:
+python "Main/Main function comparison experiment/run_main_model.py"
+Make sure required utility files from utils/ are either in the same directory or properly imported.
